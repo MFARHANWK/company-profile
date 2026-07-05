@@ -65,6 +65,8 @@ class TestimonialController extends Controller
     public function edit(Testimonial $testimonial)
     {
         //
+        $clients = ProjectClient::orderByDesc('id')->get();
+        return view('admin.testimonials.edit', compact('testimonial', 'clients'));
     }
 
     /**
@@ -73,6 +75,18 @@ class TestimonialController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         //
+        DB::transaction(function() use($request, $testimonial){
+            $validated = $request->validated();
+
+            if($request->hasFile('thumbnail')){
+                $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+                $validated['thumbnail'] = $thumbnailPath;
+            }
+
+            $testimonial->update($validated);
+        });
+
+        return redirect()->route('admin.testimonials.index');
     }
 
     /**
