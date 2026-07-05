@@ -47,9 +47,9 @@
 
                     <div class="mt-4">
                         <div class="flex flex-col gap-y-5">
-
+                            @for($i = 0; $i < 3; $i++)
                                 <input type="text" class="py-3 rounded-lg border-slate-300 border" placeholder="Write your keypoint" name="keypoints[]">
-
+                            @endfor
                         </div>
                         <x-input-error :messages="$errors->get('keypoints')" class="mt-2" />
                     </div>

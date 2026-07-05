@@ -23,6 +23,9 @@
                         
                         <select name="project_client_id" id="project_client_id" class="py-3 rounded-lg pl-3 w-full border border-slate-300">
                             <option value="">Choose project_client</option> 
+                            @foreach ($clients as $client)
+                                <option value="{{ $client->id }}">{{ $client->name }}</option> 
+                            @endforeach
                         </select>
 
                         <x-input-error :messages="$errors->get('project_client')" class="mt-2" />

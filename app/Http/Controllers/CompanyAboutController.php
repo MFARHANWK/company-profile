@@ -25,6 +25,7 @@ class CompanyAboutController extends Controller
     public function create()
     {
         //
+        $abouts = CompanyAbout::orderByDesc('id')->paginate(10);
         return view('admin.abouts.create', compact('abouts'));
     }
 
@@ -83,8 +84,13 @@ class CompanyAboutController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CompanyAbout $companyAbout)
+    public function destroy(CompanyAbout $about)
     {
         //
+        DB::transaction(function () use($about) {
+            $about->delete();
+        });
+
+        return redirect()->route('admin.abouts.index');
     }
 }
