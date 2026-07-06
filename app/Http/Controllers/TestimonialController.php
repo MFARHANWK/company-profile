@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTestimonialRequest;
+use App\Http\Requests\UpdateTestimonialRequest;
 use App\Models\ProjectClient;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -72,7 +73,7 @@ class TestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(UpdateTestimonialRequest $request, Testimonial $testimonial)
     {
         //
         DB::transaction(function() use($request, $testimonial){
