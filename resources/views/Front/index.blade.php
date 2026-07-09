@@ -233,7 +233,7 @@
                 @empty
                     <p>Belum ada data terbaru</p>
                 @endforelse
-                <a href="team.html" class="view-all-card">
+                <a href="{{ route('front.team') }}" class="view-all-card">
                     <div
                         class="card bg-white flex flex-col h-full justify-center items-center p-[30px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
                         <div class="w-[60px] h-[60px] flex shrink-0">
